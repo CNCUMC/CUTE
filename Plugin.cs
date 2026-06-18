@@ -26,7 +26,5 @@ public class Plugin : BaseUnityPlugin
         
         ModLocale.Initialize(Logger);
         _harmony.PatchAll();
-
-        Logger.LogInfo("CUTE loaded!");
     }
 }
