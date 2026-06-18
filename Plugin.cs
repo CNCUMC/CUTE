@@ -1,6 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using CUTE.Lang;
 using HarmonyLib;
+using MossLib.Tool;
 
 namespace CUTE;
 
@@ -16,6 +18,13 @@ public class Plugin : BaseUnityPlugin
     public void Awake()
     {
         Logger = base.Logger;
+        LocaleGenerator.SetLogger(Logger);
+        LocaleGenerator.Register(new EnLangGenerator(), Logger);
+        LocaleGenerator.Register(new ZhCnLangGenerator(), Logger);
+        LocaleGenerator.Register(new ZhTwLangGenerator(), Logger);
+        LocaleGenerator.GenerateAll();
+        
+        ModLocale.Initialize(Logger);
         _harmony.PatchAll();
 
         Logger.LogInfo("CUTE loaded!");

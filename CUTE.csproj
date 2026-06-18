@@ -46,6 +46,9 @@
         <Reference Include="Assembly-CSharp">
             <HintPath>F:/SteamLibrary/steamapps/common/Casualties Unknown Demo/CasualtiesUnknown_Data/Managed/Assembly-CSharp.dll</HintPath>
         </Reference>
+        <Reference Include="MossLib">
+          <HintPath>..\Moss-Lib\bin\Debug\net472\MossLib.dll</HintPath>
+        </Reference>
 
         <!-- Unity 引擎核心 (必须) -->
         <Reference Include="UnityEngine">
@@ -93,6 +96,10 @@
                 Version="1.0.2"
                 PrivateAssets="all"
         />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="patch\body\" />
     </ItemGroup>
 
     <PropertyGroup>
