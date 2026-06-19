@@ -21,6 +21,10 @@ public class Plugin : BaseUnityPlugin
     // Item
     public static ConfigEntry<bool> PowerfulMindwipe;
 
+    // Mechanism
+    public static ConfigEntry<int> CaveTicksGeneratedNumber;
+    public static ConfigEntry<bool> TraderHateYou;
+
     public void Awake()
     {
         Logger = base.Logger;
@@ -29,17 +33,28 @@ public class Plugin : BaseUnityPlugin
         LocaleGenerator.Register(new ZhCnLangGenerator(), Logger);
         LocaleGenerator.Register(new ZhTwLangGenerator(), Logger);
         LocaleGenerator.GenerateAll();
-        
+
         ModLocale.Initialize(Logger);
         _harmony.PatchAll();
 
+        // Item
         PowerfulMindwipe = RegisterConfigItem(Config, "powerful_mindwipe", true);
+
+        // Mechanism
+        CaveTicksGeneratedNumber = RegisterConfigMechanism(Config, "cave_ticks_generated_number", 16);
+        TraderHateYou = RegisterConfigMechanism(Config, "trader_hate_you", true);
     }
-    
+
     private static ConfigEntry<T> RegisterConfigItem<T>(ConfigFile configFile, string key, T defaultValue)
     {
         return RegisterConfig(configFile, "Item", key, defaultValue);
-    }    
+    }
+    
+    private static ConfigEntry<T> RegisterConfigMechanism<T>(ConfigFile configFile, string key, T defaultValue)
+    {
+        return RegisterConfig(configFile, "Mechanism", key, defaultValue);
+    }
+
     private static ConfigEntry<T> RegisterConfig<T>(ConfigFile configFile, string section, string key, T defaultValue)
     {
         return MossLib.Tool.Config.Register(configFile, section, key, defaultValue,
