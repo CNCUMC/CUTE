@@ -13,7 +13,7 @@ public static class PowerfulMindwipe
     {
         if (__instance.active && Plugin.PowerfulMindwipe.Value)
         {
-            // 持续压制智力为 0
+            // 持续压制智力为0
             _playerCamera.body.skills.INT = (int)Mathf.MoveTowards(
                 _playerCamera.body.skills.INT,
                 0f,
