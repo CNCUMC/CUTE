@@ -19,6 +19,7 @@ public class Plugin : BaseUnityPlugin
     private static readonly Dictionary<string, ConfigEntryBase> ConfigRegistry = new();
 
     // Item
+    public static ConfigEntry<float> FakeBlueprint;
     public static ConfigEntry<bool> PowerfulMindwipe;
 
     // Mechanism
@@ -38,6 +39,7 @@ public class Plugin : BaseUnityPlugin
         _harmony.PatchAll();
 
         // Item
+        FakeBlueprint = RegisterConfigItem(Config, "fake_blueprint", 75f);
         PowerfulMindwipe = RegisterConfigItem(Config, "powerful_mindwipe", true);
 
         // Mechanism
