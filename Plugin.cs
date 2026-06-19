@@ -43,7 +43,7 @@ public class Plugin : BaseUnityPlugin
     private static ConfigEntry<T> RegisterConfig<T>(ConfigFile configFile, string section, string key, T defaultValue)
     {
         return MossLib.Tool.Config.Register(configFile, section, key, defaultValue,
-            _ => Locale($"config.{section}.{key}.description"), ConfigRegistry);
+            _ => Locale($"config.{section.ToLower()}.{key}.description"), ConfigRegistry);
     }
 
     private static string Locale(string key)
